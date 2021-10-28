@@ -37,7 +37,7 @@ O App Movies é um App que criado com a finalidade de lista vídeos de um catál
   <img alt="AppMovies" src="light_desktop.png"/> 
 </p>
 
-## Dark Mode Mobile
+## Dark|Light Mode Mobile
 
 <p align="center" style="display: flex">  
   <img  alt="AppMovies" style="width: 200px; margin-right: 20px" src="dark_mobile.png"/> 
