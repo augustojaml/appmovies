@@ -19,7 +19,7 @@
 
 <br>
 
-## Sobre o DtMoney
+## Sobre o AppMovies
 
 O App Movies é um App que criado com a finalidade de lista vídeos de um catálogo. Desenvolvido na trilha ignite [Rocketseat](https://rocketseat.com.br/).
 

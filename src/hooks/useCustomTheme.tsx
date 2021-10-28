@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { theme } from '../global/theme';
 
 interface ICustomThemeProvider {
@@ -13,14 +13,35 @@ interface ICustomThemeContext {
 
 const CustomThemeContext = createContext({} as ICustomThemeContext);
 
+const keyStorage = '@appmovies:theme';
+
 function CustomThemeProvider({ children }: ICustomThemeProvider) {
   const [customTheme, setCustomTheme] = useState<typeof theme.dark | typeof theme.light>(theme.dark);
   const [isActive, setIsActive] = useState(false);
 
   function toggleTheme() {
     setIsActive(!isActive);
-    customTheme === theme.dark ? setCustomTheme(theme.light) : setCustomTheme(theme.dark);
+    if (customTheme === theme.dark) {
+      setCustomTheme(theme.light);
+      localStorage.setItem(keyStorage, 'light');
+    } else {
+      setCustomTheme(theme.dark);
+      localStorage.setItem(keyStorage, 'dark');
+    }
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storage = localStorage.getItem(keyStorage);
+      if (storage === null || storage === 'dark') {
+        setCustomTheme(theme.dark);
+        setIsActive(false);
+      } else {
+        setCustomTheme(theme.light);
+        setIsActive(true);
+      }
+    }
+  }, []);
 
   return (
     <>
